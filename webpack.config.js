@@ -20,7 +20,7 @@ const common = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Marvel Sample'
+      title: 'Marvel Character Search'
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
