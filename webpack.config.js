@@ -34,6 +34,13 @@ const common = {
       {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader?modules&localIdentName=[name]__[local]__[hash:base64:5]']
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000
+        }
       }
     ]
   }
