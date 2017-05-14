@@ -5,7 +5,7 @@ export function view(state$) {
   const vtree$ = state$
     .map(results =>
       div(`.main ${styles.mainBody}`,[
-        input('.field', {
+        input(`.field ${styles.searchField}`, {
           attrs: {
             placeholder: 'Search characters',
             type: 'text'
