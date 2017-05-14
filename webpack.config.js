@@ -20,14 +20,21 @@ const common = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Let\'s Cycle!'
+      title: 'Marvel Sample'
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
 
   module: {
-    rules: [
-      {test: /\.(js|jsx)$/, use: 'babel-loader'}
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader?modules&localIdentName=[name]__[local]__[hash:base64:5]']
+      }
     ]
   }
 }
