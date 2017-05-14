@@ -1,17 +1,23 @@
 import xs from 'xstream'
 import {view} from './view'
+import {config} from './config'
 
 export function App(sources) {
-  const events$ = sources.DOM.select('.field')
-    .events('input')
+  const searchQuery$ = sources.DOM.select('.field').events('input')
     .compose(sources.Time.debounce(1000))
-  const actions$ = intent(events$)
-  const request$ = model(actions$)
+    .map(ev => ev.target.value)
+    .filter(query => 0 < query.length)
+
+  const request$ = searchQuery$
+    .map(q => ({
+      url: `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${q}&limit=10&apikey=${config.API_KEY}`,
+      category: 'marvel'
+    }))
 
   const repos$ = sources.HTTP
-    .select('github')
+    .select('marvel')
     .flatten()
-    .map(res => res.body.items)
+    .map(res => res.body.data.results)
     .startWith([])
     .debug(val => {
       console.log(val)
@@ -22,18 +28,4 @@ export function App(sources) {
     DOM: view(repos$),
     HTTP: request$
   }
-}
-
-function intent(events) {
-  return events
-    .map(ev => ev.target.value)
-    .filter(query => 0 < query.length)
-}
-
-function model(actions) {
-  return actions
-    .map(q => ({
-      url: `https://api.github.com/search/repositories?q=${encodeURI(q)}`,
-      category: 'github'
-    }))
 }
