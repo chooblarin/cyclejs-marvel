@@ -1,5 +1,6 @@
-import {div, input, hr, ul, li, span, img} from '@cycle/dom'
+import {div, input, hr, ul, li, label, img} from '@cycle/dom'
 import styles from './styles/app.css'
+import heroStyles from './styles/hero.css'
 import logo from './images/logo-header-marvel.png'
 
 export function view(state$) {
@@ -27,7 +28,14 @@ export function view(state$) {
 function renderSearchResults(results) {
   return ul(`.search-results ${styles.searchResults}`, results.map(result =>
     li('.search-result', [
-      span(result.name)
+      div(`.wrapper ${heroStyles.wrapper}`, [
+        label(`.name ${heroStyles.name}`, result.name),
+        img(`.thumbnail ${heroStyles.thumbnail}`, {
+          attrs: {
+            src: `${result.thumbnail.path}.${result.thumbnail.extension}`
+          }
+        })
+      ])
     ])
   ))
 }
