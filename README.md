@@ -2,9 +2,10 @@
 
 Playing with [Cycle.js](https://github.com/cyclejs/cyclejs) and [Marvel Comics API](https://developer.marvel.com/)
 
-![](https://raw.githubusercontent.com/chooblarin/cyclejs-marvel/master/art/screenshot01.png)
+<img width="300" alt="art/screenshot01.jpg" src="https://raw.githubusercontent.com/chooblarin/cyclejs-marvel/master/art/screenshot01.png">
+</div>
 
-## Usage
+## How to run
 
 1. Create developer account on [Marvel](https://marvel.com/register)
 2. Get an API key
