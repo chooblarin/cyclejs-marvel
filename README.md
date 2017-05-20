@@ -2,6 +2,8 @@
 
 Playing with [Cycle.js](https://github.com/cyclejs/cyclejs) and [Marvel Comics API](https://developer.marvel.com/)
 
+![](https://raw.githubusercontent.com/chooblarin/cyclejs-marvel/master/art/screenshot01.png)
+
 ## Usage
 
 1. Create developer account on [Marvel](https://marvel.com/register)
